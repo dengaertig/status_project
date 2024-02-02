@@ -1,0 +1,72 @@
+<!-- status_app/templates/status_app/status_page.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Link zu deinem eigenen CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Status Page</h1>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for website in websites %}
+                <tr>
+                    <td>{{ website.name }}</td>
+                    <td>{{ website.url }}</td>
+                    <td><script>
+                        $(document).ready(function () {
+                            setInterval(function () {
+                                $('tbody tr').each(function () {
+                                    var url = $(this).find('td:eq(1)').text();
+                                    var row = $(this);
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: '/check_status/?url=' + encodeURIComponent(url),
+                                        success: function (data) {
+                                            row.find('td:eq(2)').text(data.status);
+                                        },
+                                        error: function () {
+                                            row.find('td:eq(2)').text('Offline');
+                                        }
+                                    });
+                                });
+                            }, 3000);
+                        });
+                    </script></td>
+                    <td>
+                        <!-- Beispiel-Formular für das Löschen mit Bootstrap-Klasse -->
+                        <form method="post" action="{% url 'delete_website' website.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Löschen</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Stilisierter Button zum Hinzufügen einer neuen Webseite mit Bootstrap-Klasse -->
+        <a href="{% url 'add_website' %}" class="btn btn-primary">Neue Webseite hinzufügen</a>
+    </div>
+
+    <!-- Optional: Füge das Bootstrap JavaScript am Ende des Body-Tags hinzu -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
