@@ -33,14 +33,14 @@
                     <td>
                         <form method="post" action="{% url 'delete_website' website.id %}" style="display:inline;">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm">Löschen</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'add_website' %}" class="btn btn-primary">Neue Webseite hinzufügen</a>
+        <a href="{% url 'add_website' %}" class="btn btn-primary">Add new Website</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
