@@ -2,7 +2,8 @@ Website Status Page
 
 This project provides a simple and elegant status page for monitoring the availability of websites. It allows users to add, delete, and view websites, along with their real-time online or offline status. Perfect for Web Developer who needs to know the Status of their Websites.
 
-![cxxay](https://github.com/KenKoLegend/status_project/assets/50487808/0f63001e-6a4d-428d-9e9f-d7e754ce7a3e)
+![cxcxyy](https://github.com/KenKoLegend/status_project/assets/50487808/595d81cf-5ca9-4c50-9b4f-f25eb182ea55)
+
 
 Features
 Website Monitoring: The status page checks the availability of added websites in real-time using ping.
@@ -16,6 +17,9 @@ Bootstrap Styling:
 The user interface is enhanced using Bootstrap, providing a clean and responsive design.
 Convenient Management: Websites can be added or deleted directly from the web interface without the need for an admin section.
 Usage
+
+![cxxay](https://github.com/KenKoLegend/status_project/assets/50487808/94269ec8-201f-4b2d-8ac1-5c0a15f8bcb7)
+
 
 Clone the repository:
 
