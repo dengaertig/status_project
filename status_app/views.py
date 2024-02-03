@@ -27,7 +27,7 @@ def add_website(request):
         form = WebsiteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('status_page')  # Weiterleitung zur Statusseite nach dem Hinzufügen
+            return redirect('status_page')
     else:
         form = WebsiteForm()
 
